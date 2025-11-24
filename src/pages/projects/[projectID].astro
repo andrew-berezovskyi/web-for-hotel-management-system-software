@@ -1,0 +1,132 @@
+---
+import { experiences } from "../../data/experiences";
+
+export function getStaticPaths() {
+	return experiences.map((experience) => ({
+		params: { projectID: experience.slug },
+	}));
+}
+
+const { projectID } = Astro.params;
+const experience = experiences.find((exp) => exp.slug === projectID);
+
+if (!experience) {
+	throw new Error(`Experience with slug "${projectID}" was not found.`);
+}
+
+import { ProjectLayout } from "../../layouts";
+import { CenterTitle, SectionTitle } from "../../components/UI";
+import { ExternalLinkIcon } from "lucide-preact";
+---
+
+<ProjectLayout
+    title={`${experience.title} | The Hotel Kyiv`}
+    description={experience.summary}
+>
+    <div
+        class="Fade_In absolute inset-0 w-full h-full z-[-1]"
+        style={`background-image: linear-gradient(rgba(5,7,9,0.85), rgba(5,7,9,0.95)), url(${experience.image}); background-size: cover; background-position: center;`}
+    ></div>
+
+    <div class="flex_center flex-col gap-4 py-6 text-center">
+        <span class="uppercase tracking-[0.6em] text-xs lg:text-sm text-white/70">
+            {experience.badge}
+        </span>
+        <h1 class="Fade_Up font-ubuntu text-[2.2em] lg:text-[3em] max-w-3xl leading-tight">
+            {experience.title}
+        </h1>
+        <p class="Fade_Up text-white/80 max-w-3xl text-[1.1em]">
+            {experience.subtitle}
+        </p>
+        <div class="flex_center gap-4 text-[1em] flex-wrap">
+            <a
+                href="/#contact"
+                class="Fade_Stagger flex_center gap-2 bg-LinkBtnGradient px-6 py-3 rounded uppercase tracking-[0.3em] text-sm"
+            >
+                <ExternalLinkIcon size={18} />
+                <span>Plan Your Stay</span>
+            </a>
+            <a
+                href="#highlights"
+                class="Fade_Stagger flex_center gap-2 bg-white/10 px-6 py-3 rounded uppercase tracking-[0.3em] text-sm"
+            >
+                <span>View Highlights</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 xl:grid-cols-[1fr_1.2fr] gap-10 py-10">
+        <div class="Fade_Up space-y-4 text-[1.1em] text-justify leading-relaxed">
+            {
+                experience.description.map((paragraph) => (
+                    <p class="text-white/80">{paragraph}</p>
+                ))
+            }
+        </div>
+        <div
+            class="Fade_Up grid grid-cols-1 md:grid-cols-3 gap-3"
+            aria-label="Experience gallery"
+        >
+            {
+                experience.gallery.map((image, index) => (
+                    <img
+                        src={image}
+                        alt={`${experience.title} detail ${index + 1}`}
+                        loading="lazy"
+                        class={`w-full h-52 object-cover rounded-lg border border-white/10 ${index === 0 ? "md:col-span-2" : ""}`}
+                    />
+                ))
+            }
+        </div>
+    </div>
+
+    <SectionTitle title="Highlights" color="primary">
+        <div
+            id="highlights"
+            class="grid grid-cols-1 md:grid-cols-2 gap-y-4 md:gap-6 md:mx-4"
+        >
+            {
+                experience.highlights.map((item) => (
+                    <div class="Fade_Up p-4 text-left flex flex-col gap-3 border border-primaryLiteAlt sm:border-transparent hover:border-primaryLiteAlt bg-skillGradientAlt rounded-md transition-colors duration-200">
+                        <span class="font-ubuntu text-[1.1em]">{item.title}</span>
+                        <p class="text-white/80 text-[0.95em]">{item.detail}</p>
+                    </div>
+                ))
+            }
+        </div>
+    </SectionTitle>
+
+    <CenterTitle title="Plan Something Extraordinary" color="secondary" />
+    <div
+        class="Fade_Up flex flex-col lg:flex-row gap-6 lg:gap-12 p-6 mb-96 4xl:mb-[30rem] bg-LinkBtnGradient rounded-xl border border-white/10"
+    >
+        <div class="space-y-3">
+            <p class="text-white/70 uppercase tracking-[0.4em] text-xs">
+                Dedicated Experience Atelier
+            </p>
+            <h3 class="text-[1.6em] font-ubuntu leading-tight">
+                Tailor every detail with our concierge curators.
+            </h3>
+        </div>
+        <div class="flex flex-wrap gap-4">
+            <div class="px-4 py-3 rounded border border-white/20 bg-black/20 text-sm">
+                <span class="block text-white/60">Direct line</span>
+                <a href="tel:+380441234567" class="text-white font-semibold">
+                    +38 (044) 123 45 67
+                </a>
+            </div>
+            <div class="px-4 py-3 rounded border border-white/20 bg-black/20 text-sm">
+                <span class="block text-white/60">Concierge email</span>
+                <a href="mailto:atelier@thehotelkyiv.com" class="text-white font-semibold">
+                    atelier@thehotelkyiv.com
+                </a>
+            </div>
+            <a
+                href="/#contact"
+                class="flex_center px-6 py-3 rounded bg-white text-black uppercase tracking-[0.3em] text-xs"
+            >
+                {experience.ctaLabel}
+            </a>
+        </div>
+    </div>
+</ProjectLayout>

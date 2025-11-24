@@ -1,0 +1,50 @@
+---
+const socialLinks = [
+	{ label: "Instagram", href: "https://instagram.com", value: "@thehotelkyiv" },
+	{ label: "Facebook", href: "https://facebook.com", value: "The Hotel Kyiv" },
+	{ label: "Tripadvisor", href: "https://tripadvisor.com", value: "Review Us" },
+];
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="relative bottom-0 w-full flex flex-col gap-6 px-6 py-12 bg-footer text-center">
+    <div class="space-y-2">
+        <p class="text-sm uppercase tracking-[0.5em] text-white/60">
+            The Hotel Kyiv
+        </p>
+        <p class="text-2xl font-ubuntu">Luminous stays above the Dnipro.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-4 text-sm text-white/80">
+        <div>
+            <p class="uppercase tracking-[0.3em] text-xs text-white/60">Visit</p>
+            <p>5 Mykhaila Hrushevskoho St, Kyiv 01008</p>
+        </div>
+        <div>
+            <p class="uppercase tracking-[0.3em] text-xs text-white/60">Call</p>
+            <a href="tel:+380441234567" class="hover:underline">
+                +38 (044) 123 45 67
+            </a>
+        </div>
+        <div>
+            <p class="uppercase tracking-[0.3em] text-xs text-white/60">Mail</p>
+            <a href="mailto:hello@thehotelkyiv.com" class="hover:underline">
+                hello@thehotelkyiv.com
+            </a>
+        </div>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-6 text-sm text-white/70">
+        {socialLinks.map((link) => (
+            <a href={link.href} target="_blank" rel="noreferrer" class="hover:text-white">
+                {link.label} · {link.value}
+            </a>
+        ))}
+    </div>
+
+    <span class="text-xs text-white/50">
+        © {currentYear} The Hotel Kyiv. Crafted with care in Ukraine.
+    </span>
+</footer>
+
+

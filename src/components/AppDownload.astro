@@ -1,0 +1,52 @@
+---
+import { SectionTitle } from "./UI";
+
+const highlights = [
+	"Curate stays and experiences in one place.",
+	"Receive push alerts for upgrades, spa openings, and dining seats.",
+	"Work offline with synced itineraries and city guides.",
+];
+---
+
+<section id="app" class="w-full min-h-screen px-6 py-4 pt-14 bg-background">
+    <SectionTitle title="Download Our Desktop App" color="secondary">
+        <div class="Fade_Up grid gap-8 md:grid-cols-[3fr_2fr] items-center">
+            <div class="space-y-4 text-white/80">
+                <p class="text-lg">
+                    Bring The Hotel Kyiv concierge desk to your desktop. Manage reservations,
+                    discover bespoke itineraries, and receive real-time notifications about your
+                    stay—all without opening a browser.
+                </p>
+                <ul class="space-y-3 text-sm">
+                    {highlights.map((item) => (
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-white"></span>
+                            <span>{item}</span>
+                        </li>
+                    ))}
+                </ul>
+                <p class="text-xs uppercase tracking-[0.4em] text-white/60">
+                    Available for macOS & Windows
+                </p>
+            </div>
+
+            <div class="Fade_Up p-6 rounded-2xl border border-white/10 bg-skillGradientAlt text-center">
+                <p class="text-white text-xl font-ubuntu mb-4">Early access build</p>
+                <p class="text-white/80 text-sm mb-6">
+                    Receive a secure download link and onboarding concierge support as soon as the
+                    app launches.
+                </p>
+                <a
+                    href="#"
+                    class="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-LinkBtnGradient text-white uppercase tracking-[0.3em]"
+                >
+                    Download App
+                </a>
+                <p class="text-xs text-white/60 mt-3">
+                    *Clicking will soon trigger the installer download.
+                </p>
+            </div>
+        </div>
+    </SectionTitle>
+</section>
+

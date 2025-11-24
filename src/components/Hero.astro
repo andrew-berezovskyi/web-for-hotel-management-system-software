@@ -1,0 +1,102 @@
+---
+const heroStats = [
+	{ label: "Suites & residences", value: "120", detail: "river & skyline views" },
+	{ label: "Culinary studios", value: "04", detail: "chef-led concepts" },
+	{ label: "Wellness ateliers", value: "2,000 m²", detail: "spa & vitality club" },
+];
+const heroFeatures = [
+	"Five-star sanctuary overlooking the Dnipro River",
+	"Art-forward interiors by Studio Laska",
+	"Concierge, chauffeur, and butler teams 24/7",
+];
+const heroImage =
+	"https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1600&q=80";
+---
+
+<section
+    id="Hero"
+    class="w-full min-h-[calc(100vh-4rem)] px-6 py-8 bg-background flex justify-center items-center overflow-hidden"
+>
+    <div class="grid w-full max-w-6xl gap-10 lg:grid-cols-[1fr_0.9fr] items-center">
+        <div class="w-full flex flex-col gap-8 text-center lg:text-left">
+            <div class="space-y-4">
+                <p class="Fade_Stagger text-sm uppercase tracking-[0.5em] text-white/60">
+                    The Hotel Kyiv
+                </p>
+                <h1
+                    class="Fade_Stagger text-[3em] lg:text-[4.5em] leading-tight font-ubuntu"
+                >
+                    A five-star ode to Kyiv’s skyline.
+                </h1>
+                <p class="Fade_Stagger text-lg text-white/80 max-w-2xl mx-auto lg:mx-0">
+                    Experience luminous suites, Michelin-caliber dining, and holistic rituals high
+                    above the Dnipro. Every touchpoint is choreographed for guests who expect
+                    discretion, art, and impeccable service.
+                </p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-4 justify-center lg:justify-start">
+                <a
+                    href="#contact"
+                    class="Fade_Stagger inline-flex justify-center items-center gap-3 px-10 py-3 rounded-full bg-white text-black font-semibold uppercase tracking-[0.3em]"
+                >
+                    Book a Suite
+                </a>
+                <a
+                    href="#projects"
+                    class="Fade_Stagger inline-flex justify-center items-center gap-3 px-10 py-3 rounded-full border border-white/40 uppercase tracking-[0.3em]"
+                >
+                    Explore Experiences
+                </a>
+            </div>
+
+            <ul class="Fade_Stagger grid gap-3 text-sm text-white/75">
+                {heroFeatures.map((feature) => (
+                    <li class="flex items-start gap-3 justify-center lg:justify-start">
+                        <span class="mt-1 h-1.5 w-1.5 rounded-full bg-white"></span>
+                        <span>{feature}</span>
+                    </li>
+                ))}
+            </ul>
+
+            <div class="Fade_Up grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {heroStats.map((stat) => (
+                    <div class="rounded-lg border border-white/15 bg-white/[0.03] px-4 py-3">
+                        <p class="text-[2em] font-ubuntu gradientText">{stat.value}</p>
+                        <p class="uppercase tracking-[0.3em] text-xs text-white/60">
+                            {stat.label}
+                        </p>
+                        <span class="text-xs text-white/50">{stat.detail}</span>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        <div class="Hero_Orbit relative flex_center w-full max-w-[520px] aspect-square mx-auto">
+            <div
+                class="Spring_Up flex_center w-[70%] aspect-square rounded-full z-10 shadow-2xl border border-white/20 overflow-hidden"
+            >
+                <img
+                    src={heroImage}
+                    alt="The Hotel Kyiv panoramic suite"
+                    class="object-cover w-full h-full"
+                    loading="eager"
+                />
+            </div>
+            <div class="Spring_Up Hero_Trail Trail1">
+                <span class="Orbit_Dot"></span>
+            </div>
+            <div class="Spring_Up Hero_Trail Trail2">
+                <span class="Orbit_Dot"></span>
+            </div>
+            <div class="Spring_Up Hero_Trail Trail3">
+                <span class="Orbit_Dot"></span>
+            </div>
+            <div class="Spring_Up Hero_Trail Trail4">
+                <span class="Orbit_Dot"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+

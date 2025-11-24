@@ -1,0 +1,53 @@
+---
+import { CenterTitle } from "./UI";
+
+const offerings = [
+	{
+		title: "Imperial Suites",
+		copy: "Duplex residences framed by floor-to-ceiling electrochromic glass, private foyers, and in-suite spa hammams.",
+		items: ["Custom Dnipro marble bars", "Butler pantry & Gueridon service", "Private winter gardens"],
+	},
+	{
+		title: "Gastronomy",
+		copy: "Four distinct dining studios celebrating Ukrainian terroir, Black Sea seafood, and avant-garde mixology.",
+		items: ["Atelier tasting counter", "Rooftop fire bar", "Champagne & dessert library"],
+	},
+	{
+		title: "Wellness Gallery",
+		copy: "A 2,000 m² sanctuary blending Kiev banya rituals with oxygen IV lounges, Watsu pool, and quartz sand beds.",
+		items: ["Sound therapy dome", "Vitality circuit & snow fountain", "Nutritionist-led detox bar"],
+	},
+	{
+		title: "Meetings & Celebrations",
+		copy: "Tailor events in salons bathed in natural light, with immersive AV, floral ateliers, and curated cultural programming.",
+		items: ["Skyline ballroom", "Private screening lounge", "In-residence chef experiences"],
+	},
+];
+---
+
+<section id="skills" class="w-full min-h-screen px-6 py-4 pt-14 bg-background">
+    <CenterTitle title="Suites & Amenities" color="primary" />
+
+    <div class="Fade_Up grid gap-6 lg:gap-8 py-6">
+        {offerings.map((offering) => (
+            <article class="Fade_Up border border-white/10 rounded-2xl p-6 bg-skillGradient">
+                <div class="flex flex-col gap-2">
+                    <p class="text-sm uppercase tracking-[0.5em] text-white/60">
+                        {offering.title}
+                    </p>
+                    <p class="text-white/85 text-sm lg:text-base">{offering.copy}</p>
+                </div>
+                <ul class="grid sm:grid-cols-3 gap-3 mt-4 text-sm text-white/75">
+                    {offering.items.map((item) => (
+                        <li class="flex items-start gap-2">
+                            <span class="mt-1 h-1.5 w-1.5 rounded-full bg-white"></span>
+                            <span>{item}</span>
+                        </li>
+                    ))}
+                </ul>
+            </article>
+        ))}
+    </div>
+</section>
+
+

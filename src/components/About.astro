@@ -1,0 +1,68 @@
+---
+import { SectionTitle } from "./UI";
+
+const aboutImage =
+	"https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=1200&q=80";
+const pillars = [
+	{
+		title: "Location",
+		copy: "Steps from the Verkhovna Rada and Mariinskyi Park with sweeping Dnipro views.",
+	},
+	{
+		title: "Craftsmanship",
+		copy: "Hand-carved oak, Italian travertine, and Ukrainian artworks layer each suite.",
+	},
+	{
+		title: "Service Promise",
+		copy: "Personal hosts orchestrate every arrival, from in-room check-in to private tours.",
+	},
+];
+---
+
+<section id="about" class="w-full min-h-screen px-6 py-4 pt-14 bg-background">
+    <SectionTitle
+        title="Our Story"
+        color="primary"
+        className="h-screen flex flex-col justify-center"
+    >
+        <div class="flex_center flex-col lg:flex-row w-full h-full py-10 gap-8">
+            <div
+                class="Fade_Up w-full lg:w-1/2 min-h-[320px] rounded-[1.5em] border border-white/10 overflow-hidden"
+                style={`background-image: linear-gradient(135deg, rgba(0,0,0,0.25), rgba(0,0,0,0.65)), url(${aboutImage}); background-size: cover; background-position: center;`}
+            ></div>
+
+            <div
+                class="Fade_Up w-full lg:w-1/2 flex justify-center items-start flex-col gap-4 lg:border-l border-primary py-8 lg:pl-10"
+            >
+                <h2 class="Fade_Up text-[1.8em] font-bold font-ubuntu">
+                    The spirit of Kyiv, reimagined.
+                </h2>
+                <p class="Fade_Up text-justify text-white/85">
+                    The Hotel Kyiv was conceived as a contemporary salon for world travelers—a place
+                    where Ukrainian heritage, haute design, and cosmopolitan energy converge. Twelve
+                    stories of suites, penthouses, and ateliers capture the golden glow of the city
+                    while insulating guests in calm, curated luxury.
+                </p>
+                <p class="Fade_Up text-justify text-white/75">
+                    From bespoke tea ceremonies to midnight spa rituals, every touch is delivered
+                    with warmth and precision. We collaborate with local artisans, Michelin-trained
+                    chefs, and cultural institutions to ensure that your stay is both deeply Kyivian
+                    and effortlessly global.
+                </p>
+
+                <div class="grid gap-4 py-4 w-full">
+                    {pillars.map((pillar) => (
+                        <div class="Fade_Up border border-white/10 rounded-xl p-4 bg-white/5">
+                            <p class="text-sm uppercase tracking-[0.5em] text-white/60">
+                                {pillar.title}
+                            </p>
+                            <p class="text-white/80 text-sm mt-1">{pillar.copy}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </SectionTitle>
+</section>
+
+
